@@ -16,12 +16,14 @@
     </resultMap>
 
     <select id="selectCoursesByTutor" parameterType="int" resultMap="CourseResult">
-  		select * from courses where tutor_id=#{tutorId}
-  	</select>
+        SELECT *
+        FROM courses
+        WHERE tutor_id = #{tutorId}
+    </select>
 
     <select id="searchCourses" parameterType="hashmap" resultMap="CourseResult" useCache="false">
         SELECT * FROM COURSES
-        WHERE TUTOR_ID= #{tutorId}
+        WHERE TUTOR_ID = #{tutorId}
         <if test="courseName != null">
             AND name like #{courseName}
         </if>
@@ -31,7 +33,21 @@
         <if test="endDate != null">
             AND end_date &lt;= #{endDate}
         </if>
+    </select>
 
+    <select id="searchCoursesByType" parameterType="hashmap" resultMap="CourseResult" useCache="false">
+        SELECT * FROM COURSES
+        <choose>
+            <when test="searchBy == 'Tutor'">
+                WHERE TUTOR_ID = #{tutorId}
+            </when>
+            <when test="searchBy == 'CourseName'">
+                WHERE TUTOR_ID = #{tutorId}
+            </when>
+            <otherwise>
+                WHERE start_date > now()
+            </otherwise>
+        </choose>
     </select>
 
     <select id="searchCoursesByTutors" parameterType="hashmap" resultMap="CourseResult">

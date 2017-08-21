@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jdk.management.resource.internal.inst.FileOutputStreamRMHooks;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -26,6 +27,19 @@ public class CourseServiceTest {
     public static void teardown() {
         courseService = null;
     }
+
+
+    @Test
+    public void selectCoursesByTutor() {
+        List<Course> courses = courseService.selectCoursesByTutor(1);
+        Assert.assertNotNull(courses);
+        for (Course course : courses) {
+            Assert.assertNotNull(course);
+            System.out.println(course);
+        }
+    }
+
+
 
     @Test
     public void searchCourses() {

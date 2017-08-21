@@ -15,6 +15,16 @@ import com.mybatis3.util.MyBatisUtil;
 public class CourseService {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
+    public List<Course> selectCoursesByTutor(int tutorId) {
+        SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+        try {
+            CourseMapper mapper = sqlSession.getMapper(CourseMapper.class);
+            return mapper.selectCoursesByTutor(tutorId);
+        } finally {
+            sqlSession.close();
+        }
+    }
+
     public List<Course> searchCourses(Map<String, Object> map) {
         logger.debug("searchCourses By :" + map);
         SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();

@@ -35,7 +35,7 @@ public class StudentServiceTest {
         assertNotNull(students);
         for (Student student : students) {
             assertNotNull(student);
-            //System.out.println(student);
+            System.out.println(student);
         }
 
     }

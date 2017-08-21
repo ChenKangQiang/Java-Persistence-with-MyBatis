@@ -15,7 +15,9 @@
     </resultMap>
 
     <select id="selectAddressById" parameterType="int" resultMap="AddressResult">
-  		select * from addresses where addr_id=#{addrId}
-  	</select>
+        SELECT *
+        FROM addresses
+        WHERE addr_id = #{addrId}
+    </select>
 
 </mapper>
