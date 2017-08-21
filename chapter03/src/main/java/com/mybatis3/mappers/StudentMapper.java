@@ -6,26 +6,23 @@ import java.util.Map;
 import com.mybatis3.domain.Student;
 
 
-
 /**
  * @author Siva
- *
  */
-public interface StudentMapper
-{
+public interface StudentMapper {
 
-	List<Student> findAllStudents();
+    List<Student> findAllStudents();
 
-	Student findStudentById(Integer id);
+    Student findStudentById(Integer id);
 
-	Student selectStudentWithAddress(int id);
-	
-	void insertStudent(Student student);
-	
-	void insertStudentWithMap(Map<String, Object> map);
+    Student selectStudentWithAddress(int id);
 
-	void updateStudent(Student student);
-	
-	int deleteStudent(int id);
-	
+    void insertStudent(Student student);
+
+    void insertStudentWithMap(Map<String, Object> map);
+
+    void updateStudent(Student student);
+
+    int deleteStudent(int id);
+
 }

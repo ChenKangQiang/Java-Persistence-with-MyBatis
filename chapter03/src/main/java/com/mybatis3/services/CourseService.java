@@ -12,33 +12,27 @@ import com.mybatis3.mappers.CourseMapper;
 import com.mybatis3.util.MyBatisUtil;
 
 
-public class CourseService 
-{
-	private Logger logger = LoggerFactory.getLogger(getClass());
-	
-	public List<Course> searchCourses(Map<String, Object> map) 
-	{
-		logger.debug("searchCourses By :"+map);
-		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
-		try {
-			CourseMapper mapper = sqlSession.getMapper(CourseMapper.class);
-			return mapper.searchCourses(map);
-		} 
-		
-		finally {
-			sqlSession.close();
-		}
-	}
+public class CourseService {
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
-	public List<Course> searchCoursesByTutors(Map<String, Object> map) {
-		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
-		try {
-			CourseMapper mapper = sqlSession.getMapper(CourseMapper.class);
-			return mapper.searchCoursesByTutors(map);
-		} 
-		
-		finally {
-			sqlSession.close();
-		}
-	}
+    public List<Course> searchCourses(Map<String, Object> map) {
+        logger.debug("searchCourses By :" + map);
+        SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+        try {
+            CourseMapper mapper = sqlSession.getMapper(CourseMapper.class);
+            return mapper.searchCourses(map);
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+    public List<Course> searchCoursesByTutors(Map<String, Object> map) {
+        SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+        try {
+            CourseMapper mapper = sqlSession.getMapper(CourseMapper.class);
+            return mapper.searchCoursesByTutors(map);
+        } finally {
+            sqlSession.close();
+        }
+    }
 }

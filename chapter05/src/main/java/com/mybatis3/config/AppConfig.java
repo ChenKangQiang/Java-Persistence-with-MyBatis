@@ -9,15 +9,14 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.context.annotation.Bean;
 */
+
 /**
  * @author Siva
- *
  */
 @Configuration
-@MapperScan(value="com.mybatis3.mappers")
-public class AppConfig
-{
-	/*
+@MapperScan(value = "com.mybatis3.mappers")
+public class AppConfig {
+    /*
 	@Bean
 	public DataSource dataSource() {
 		return new PooledDataSource("com.mysql.jdbc.Driver", 
