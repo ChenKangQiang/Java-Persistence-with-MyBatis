@@ -35,6 +35,27 @@
         </if>
     </select>
 
+
+    <!--当所有条件都是可选时，可以使用where字句-->
+    <select id="searchCoursesWithAllOptional" parameterType="hashmap" resultMap="CourseResult" useCache="false">
+        SELECT * FROM COURSES
+        <where>
+            <if test="tutorId != null">
+                TUTOR_ID = #{tutorId}
+            </if>
+            <if test="courseName != null">
+                AND name like #{courseName}
+            </if>
+            <if test="startDate != null">
+                AND start_date &gt;= #{startDate}
+            </if>
+            <if test="endDate != null">
+                AND end_date &lt;= #{endDate}
+            </if>
+        </where>
+    </select>
+
+
     <select id="searchCoursesByType" parameterType="hashmap" resultMap="CourseResult" useCache="false">
         SELECT * FROM COURSES
         <choose>
@@ -42,7 +63,7 @@
                 WHERE TUTOR_ID = #{tutorId}
             </when>
             <when test="searchBy == 'CourseName'">
-                WHERE TUTOR_ID = #{tutorId}
+                WHERE name like #{courseName}
             </when>
             <otherwise>
                 WHERE start_date > now()
@@ -50,17 +71,35 @@
         </choose>
     </select>
 
+    <!--foreach循环-->
+    <!--
+    <select id="searchCoursesByTutors" parameterType="hashmap" resultMap="CourseResult">
+        SELECT * FROM COURSES
+        <if test="tutorIds != null">
+            <where>
+                <foreach item="tutorId" collection="tutorIds">
+                    OR tutor_id = #{tutorId}
+                </foreach>
+            </where>
+        </if>
+    </select>
+    -->
+
+
+    <!--foreach循环，生成IN子句-->
     <select id="searchCoursesByTutors" parameterType="hashmap" resultMap="CourseResult">
         SELECT * FROM COURSES
         <if test="tutorIds != null">
             <where>
                 tutor_id IN
-                <foreach item="tutorId" collection="tutorIds"
-                         open="(" separator="," close=")">
+                <foreach item="tutorId" collection="tutorIds" open="(" separator="," close=")">
                     #{tutorId}
                 </foreach>
             </where>
         </if>
     </select>
+
+
+
 
 </mapper>

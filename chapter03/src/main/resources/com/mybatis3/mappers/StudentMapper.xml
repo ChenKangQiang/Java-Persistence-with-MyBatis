@@ -67,11 +67,13 @@
         FROM Students
     </select>
 
+
     <select id="findStudentById" parameterType="int" resultMap="StudentWithAddressNestedSelect">
         SELECT *
         FROM Students
         WHERE stud_id = #{studId}
     </select>
+
 
     <select id="selectStudentWithAddress" parameterType="int" resultMap="StudentWithAddressNestedResultMap">
         SELECT
@@ -109,8 +111,6 @@
     -->
 
 
-
-
     <insert id="insertStudent" parameterType="Student" useGeneratedKeys="true" keyProperty="studId">
         INSERT INTO students (name, email, addr_id, phone)
         VALUES (#{name}, #{email}, #{address.addrId}, #{phone})
@@ -121,21 +121,17 @@
         VALUES (#{name}, #{email}, #{address.addrId}, #{phone})
     </insert>
 
+
     <update id="updateStudent" parameterType="Student">
         update students
-        <!-- set
-        name=#{name},
-        email=#{email},
-        phone=#{phone}
-        where stud_id=#{studId} -->
-
         <set>
-            <if test="name != null">name=#{name},</if>
-            <if test="email != null">email=#{email},</if>
-            <if test="phone != null">phone=#{phone},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="phone != null">phone = #{phone},</if>
         </set>
         where stud_id=#{studId}
     </update>
+
 
     <delete id="deleteStudent" parameterType="int">
         DELETE FROM students

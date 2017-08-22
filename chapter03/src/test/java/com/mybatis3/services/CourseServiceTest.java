@@ -40,6 +40,22 @@ public class CourseServiceTest {
     }
 
 
+    @Test
+    public void searchCoursesByType() {
+        Map<String, Object> map = new HashMap<String, Object>();
+        //map.put("searchBy", "CourseName");
+        //map.put("courseName", "%JavaEE6%");
+        map.put("searchBy", "Tutor");
+        map.put("tutorId", 1);
+        List<Course> courses = courseService.searchCoursesByType(map);
+        Assert.assertNotNull(courses);
+        for (Course course : courses) {
+            Assert.assertNotNull(course);
+            System.out.println(course);
+        }
+    }
+
+
 
     @Test
     public void searchCourses() {
@@ -51,7 +67,7 @@ public class CourseServiceTest {
         Assert.assertNotNull(courses);
         for (Course course : courses) {
             Assert.assertNotNull(course);
-            //System.out.println(course);
+            System.out.println(course);
         }
     }
 
@@ -68,7 +84,7 @@ public class CourseServiceTest {
         Assert.assertNotNull(courses);
         for (Course course : courses) {
             Assert.assertNotNull(course);
-            //System.out.println(course);
+            System.out.println(course);
         }
     }
 }

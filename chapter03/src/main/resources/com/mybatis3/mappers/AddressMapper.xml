@@ -14,7 +14,7 @@
         <result property="country" column="country"/>
     </resultMap>
 
-    <select id="selectAddressById" parameterType="int" resultMap="AddressResult">
+    <select id="findAddressById" parameterType="int" resultMap="AddressResult">
         SELECT *
         FROM addresses
         WHERE addr_id = #{addrId}

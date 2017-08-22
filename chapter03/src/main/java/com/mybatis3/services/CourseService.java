@@ -36,6 +36,17 @@ public class CourseService {
         }
     }
 
+    public List<Course> searchCoursesByType(Map<String, Object> map) {
+        SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+        try {
+            CourseMapper mapper = sqlSession.getMapper(CourseMapper.class);
+            return mapper.searchCoursesByType(map);
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+
     public List<Course> searchCoursesByTutors(Map<String, Object> map) {
         SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
         try {
