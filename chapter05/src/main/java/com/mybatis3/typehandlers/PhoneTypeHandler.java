@@ -20,9 +20,8 @@ import com.mybatis3.domain.PhoneNumber;
 public class PhoneTypeHandler extends BaseTypeHandler<PhoneNumber> {
 
     @Override
-    public void setNonNullParameter(PreparedStatement ps, int i,
-                                    PhoneNumber parameter, JdbcType jdbcType) throws SQLException {
-        ps.setString(i, parameter.getAsString());
+    public void setNonNullParameter(PreparedStatement ps, int i, PhoneNumber parameter, JdbcType jdbcType) throws SQLException {
+        ps.setString(i, parameter.toString());
     }
 
     @Override

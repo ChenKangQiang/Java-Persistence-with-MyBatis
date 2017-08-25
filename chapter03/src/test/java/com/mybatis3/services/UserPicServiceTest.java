@@ -55,6 +55,7 @@ public class UserPicServiceTest {
 
     @Test
     public void selectUserPic() {
+        insertUserPic();
         byte[] pic = null;
         String filePath = "/Users/chen/Desktop/newPic.png";
         UserPic userPic = userPicService.selectUserPic(1);

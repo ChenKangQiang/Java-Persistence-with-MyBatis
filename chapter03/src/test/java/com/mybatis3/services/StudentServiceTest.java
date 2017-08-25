@@ -1,5 +1,6 @@
 package com.mybatis3.services;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import org.junit.Test;
 
 import com.mybatis3.domain.PhoneNumber;
 import com.mybatis3.domain.Student;
+
 
 
 public class StudentServiceTest {
@@ -37,8 +39,18 @@ public class StudentServiceTest {
             assertNotNull(student);
             System.out.println(student);
         }
-
     }
+
+    @Test
+    public void testGetMapOfAllStudents() {
+        Map<Integer, Student> mapStudents = studentService.getMapOfAllStudents();
+        assertNotNull(mapStudents);
+        for (Map.Entry<Integer, Student> entry : mapStudents.entrySet()) {
+            assertNotNull(entry);
+            System.out.println(entry.getKey() + ":" + entry.getValue());
+        }
+    }
+
 
     @Test
     public void testFindStudentById() {

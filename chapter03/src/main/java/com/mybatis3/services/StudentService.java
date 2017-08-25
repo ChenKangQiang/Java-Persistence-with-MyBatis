@@ -22,6 +22,17 @@ public class StudentService {
         }
     }
 
+    public Map<Integer, Student> getMapOfAllStudents() {
+        SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+        try {
+            StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+            return studentMapper.getMapOfAllStudents();
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+
     public Student findStudentById(Integer id) {
         SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
         try {

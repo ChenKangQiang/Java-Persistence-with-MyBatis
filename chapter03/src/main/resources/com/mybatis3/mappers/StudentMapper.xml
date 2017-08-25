@@ -67,6 +67,11 @@
         FROM Students
     </select>
 
+    <select id="getMapOfAllStudents" resultMap="StudentResult">
+        SELECT *
+        FROM Students
+    </select>
+
 
     <select id="findStudentById" parameterType="int" resultMap="StudentWithAddressNestedSelect">
         SELECT *

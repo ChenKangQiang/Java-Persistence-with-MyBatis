@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.mybatis3.domain.Student;
+import org.apache.ibatis.annotations.MapKey;
 
 
 /**
@@ -12,6 +13,14 @@ import com.mybatis3.domain.Student;
 public interface StudentMapper {
 
     List<Student> findAllStudents();
+
+    /**
+     * 以map形式返回所有对象
+     * @return
+     */
+    @MapKey("studId")
+    Map<Integer, Student> getMapOfAllStudents();
+
 
     Student findStudentById(Integer id);
 
