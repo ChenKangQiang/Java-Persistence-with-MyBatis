@@ -55,13 +55,12 @@ public class StudentServiceTest {
 
     @Test
     public void testCreateStudent() {
-        //Address address = new Address();
-        Address address = new Address(1, "Quaker Ridge Rd.", "Bethel", "Brooklyn", "06801", "USA");
-        /*address.setStreet("Quaker Ridge Rd.");
+        Address address = new Address();
+        address.setStreet("Quaker Ridge Rd.");
 		address.setCity("Bethel");
 		address.setState("Brooklyn");
 		address.setZip("06801");
-		address.setCountry("USA");*/
+		address.setCountry("USA");
 
         Student stud = new Student();
         long ts = System.currentTimeMillis();

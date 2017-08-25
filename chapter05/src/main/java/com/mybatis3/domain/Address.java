@@ -18,22 +18,4 @@ public class Address implements Serializable {
     private String state;
     private String zip;
     private String country;
-
-    public Address() {
-
-    }
-
-    public Address(Integer addrId) {
-
-        this.addrId = addrId;
-    }
-
-    public Address(Integer addrId, String street, String city, String state, String zip, String country) {
-        this.addrId = addrId;
-        this.street = street;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
-        this.country = country;
-    }
 }
