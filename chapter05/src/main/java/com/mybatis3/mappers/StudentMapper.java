@@ -13,11 +13,14 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.mybatis3.domain.Student;
+import org.springframework.stereotype.Repository;
 
 
 /**
  * @author Siva
  */
+
+@Repository
 public interface StudentMapper {
 
     @Select("select * from students")

@@ -21,12 +21,14 @@ import org.apache.ibatis.annotations.UpdateProvider;
 import com.mybatis3.domain.Course;
 import com.mybatis3.domain.Tutor;
 import com.mybatis3.sqlproviders.TutorDynaSqlProvider;
+import org.springframework.stereotype.Repository;
 
 
 /**
  * @author Siva
  */
 
+@Repository
 public interface TutorMapper {
 
     @Select("select * from courses where tutor_id=#{tutorId}")

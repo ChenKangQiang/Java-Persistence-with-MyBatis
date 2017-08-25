@@ -34,15 +34,15 @@ public class StudentServiceTest {
         List<Student> students = studentService.findAllStudents();
         assertNotNull(students);
         for (Student student : students) {
-            System.err.println(student);
+            System.out.println(student);
         }
     }
 
     @Test
     public void testFindStudentById() {
         Student student = studentService.findStudentById(1);
-        System.err.println(student);
-        System.err.println(student.getAddress().getAddrId() + ":" + student.getAddress().getCity());
+        System.out.println(student);
+        System.out.println(student.getAddress().getAddrId() + ":" + student.getAddress().getCity());
 
     }
 
@@ -73,7 +73,7 @@ public class StudentServiceTest {
         assertNotNull(student);
         assertEquals("stud_" + ts, student.getName());
         assertEquals("stud_" + ts + "@gmail.com", student.getEmail());
-        System.err.println("CreatedStudent: " + student);
+        System.out.println("CreatedStudent: " + student);
     }
 
     @Test(expected = DataAccessException.class)
@@ -125,13 +125,13 @@ public class StudentServiceTest {
     public void testDeleteStudent() {
         boolean deleted = studentService.deleteStudent(3);
         assertTrue(deleted);
-        System.err.println("deleteStudent:" + deleted);
+        System.out.println("deleteStudent:" + deleted);
     }
 
     @Test
     public void testFindStudentMapById() {
         Map<String, Object> studentMap = studentService.findStudentMapById(1);
-        System.err.println(studentMap);
+        System.out.println(studentMap);
     }
 
     @Test
